@@ -9,8 +9,11 @@ authors = [{ name = "Denis Anikin", email = "xxxfenixru@gmail.com" }]
 dependencies = []
 
 [build-system]
-requires = ["uv_build>=0.8"]
+requires = ["uv_build>=0.8,<0.12"]
 build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
 
 [dependency-groups]
 dev = [
@@ -62,7 +65,7 @@ select = ["COP"]
 exclude = [".venv", ".cache"]
 
 [tool.pytest.ini_options]
-addopts = "-n auto --cov=src --cov-report=term-missing --cov-report=json"
+addopts = "-n auto --cov=example_python_package --cov-report=term-missing --cov-report=json"
 
 [tool.coverage.report]
 exclude_also = ["if typing.TYPE_CHECKING:"]
