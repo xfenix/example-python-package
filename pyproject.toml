@@ -1,0 +1,68 @@
+[project]
+name = "example-python-package"
+version = "0"
+description = "A simple Python package following community-of-python/pylines standards."
+readme = "README.md"
+requires-python = ">=3.14"
+license = "MIT"
+authors = [{ name = "Denis Anikin", email = "xxxfenixru@gmail.com" }]
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.8"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff",
+    "community-of-python-flake8-plugin",
+    "flake8-pyproject",
+    "auto-typing-final",
+    "pytest",
+    "pytest-xdist",
+    "pytest-cov",
+    "pre-commit",
+]
+
+[tool.ruff]
+fix = true
+unsafe-fixes = true
+line-length = 120
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+select = ["ALL"]
+external = ["COP"]
+ignore = [
+    "EM",
+    "FBT",
+    "TRY003",
+    "D1",
+    "D203",
+    "D213",
+    "G004",
+    "FA",
+    "COM812",
+    "ISC001",
+]
+
+[tool.ruff.lint.isort]
+no-lines-before = ["standard-library", "local-folder"]
+known-third-party = []
+known-local-folder = []
+lines-after-imports = 2
+
+[tool.ruff.lint.extend-per-file-ignores]
+"tests/*.py" = ["S101", "S311", "INP001"]
+
+[tool.flake8]
+select = ["COP"]
+exclude = [".venv", ".cache"]
+
+[tool.pytest.ini_options]
+addopts = "-n auto --cov=src --cov-report=term-missing"
+
+[tool.coverage.report]
+exclude_also = ["if typing.TYPE_CHECKING:"]

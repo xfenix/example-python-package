@@ -1,0 +1,15 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.21
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+  - repo: local
+    hooks:
+      - id: auto-typing-final
+        name: auto-typing-final
+        entry: uv run auto-typing-final
+        language: system
+        types: [python]
+        pass_filenames: true
