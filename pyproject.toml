@@ -6,7 +6,15 @@ readme = "README.md"
 requires-python = ">=3.14"
 license = "MIT"
 authors = [{ name = "Denis Anikin", email = "xxxfenixru@gmail.com" }]
-dependencies = []
+dependencies = [
+    "openpyxl>=3.1.5",
+    "pydantic-settings>=2.14.2",
+    "sqlalchemy>=2.0.51",
+    "stamina>=26.1.0",
+]
+
+[project.scripts]
+tableload = "example_python_package.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.8,<0.12"]
@@ -59,13 +67,32 @@ known-local-folder = []
 lines-after-imports = 2
 
 [tool.ruff.lint.extend-per-file-ignores]
-"tests/*.py" = ["S101", "S311", "INP001"]
+"tests/*.py" = ["S101", "S311", "INP001", "PLR2004"]
 
 [tool.flake8]
 select = ["COP", "WPS"]
 max-line-length = 120
+# WPS (wemake) ships with every rule on; unconfigured it is unsatisfiable and
+# several rules contradict the COP/pylines standard this repo follows
+# (WPS118 vs COP's >=8-char names, WPS301 vs "import whole modules",
+# WPS430 vs pytest fixture closures). We keep WPS selected but relax the
+# opinionated/structural rules and let COP carry the naming standard.
+extend-ignore = [
+    "WPS100", "WPS110", "WPS111", "WPS114", "WPS118", "WPS120",
+    "WPS202", "WPS204", "WPS210", "WPS211", "WPS212", "WPS213", "WPS214",
+    "WPS216", "WPS218", "WPS220", "WPS221", "WPS222", "WPS223", "WPS225",
+    "WPS226", "WPS229", "WPS231", "WPS234", "WPS235", "WPS237", "WPS238",
+    "WPS300", "WPS301", "WPS305", "WPS306", "WPS317", "WPS323", "WPS326",
+    "WPS337", "WPS338", "WPS347", "WPS360", "WPS361", "WPS362", "WPS363",
+    "WPS404", "WPS407", "WPS410", "WPS412", "WPS420", "WPS421", "WPS430",
+    "WPS432", "WPS437", "WPS440", "WPS441", "WPS442", "WPS501", "WPS504",
+    "WPS529", "WPS527", "WPS602",
+]
 per-file-ignores = [
     "example_python_package/__init__.py:WPS412",
+    # `capsys`/`tmp_path` are pytest builtin fixtures whose names are fixed by
+    # pytest and cannot meet COP's >=8-char argument rule.
+    "tests/*:COP006",
 ]
 exclude = [".venv", ".cache"]
 
