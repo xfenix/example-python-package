@@ -25,6 +25,7 @@ dev = [
     "pytest-xdist",
     "pytest-cov",
     "pre-commit",
+    "wemake-python-styleguide>=1.6.2",
 ]
 
 [tool.ruff]
@@ -61,7 +62,11 @@ lines-after-imports = 2
 "tests/*.py" = ["S101", "S311", "INP001"]
 
 [tool.flake8]
-select = ["COP"]
+select = ["COP", "WPS"]
+max-line-length = 120
+per-file-ignores = [
+    "example_python_package/__init__.py:WPS412",
+]
 exclude = [".venv", ".cache"]
 
 [tool.pytest.ini_options]

@@ -35,8 +35,9 @@ check: lint types test
 build:
     uv build
 
-# Stamp version from tag, build, and publish to PyPI.
+# Stamp version from tag, build, and publish. Reads PYPI_TOKEN from env.
+# Override PyPI with UV_PUBLISH_URL to target TestPyPI (https://test.pypi.org/legacy/).
 publish version:
     uv version "{{ version }}"
     uv build
-    uv publish
+    uv publish --token "$PYPI_TOKEN"

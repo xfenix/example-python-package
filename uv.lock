@@ -127,7 +127,7 @@ wheels = [
 ]
 
 [[package]]
-name = "example-python-package"
+name = "example-python-package-xfenix-testpub"
 version = "0"
 source = { editable = "." }
 
@@ -141,6 +141,7 @@ dev = [
     { name = "pytest-cov" },
     { name = "pytest-xdist" },
     { name = "ruff" },
+    { name = "wemake-python-styleguide" },
 ]
 
 [package.metadata]
@@ -155,6 +156,7 @@ dev = [
     { name = "pytest-cov" },
     { name = "pytest-xdist" },
     { name = "ruff" },
+    { name = "wemake-python-styleguide", specifier = ">=1.6.2" },
 ]
 
 [[package]]
@@ -461,4 +463,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/34/d9/b477fddb68840b570af8b22afe9b035cbc277b5fb7b33dea390617a8b10f/virtualenv-21.6.1.tar.gz", hash = "sha256:15f978b7cd329f24855ff4a0c4b4899cc7678589f49adbdcbbb4d3232e641128", size = 5526620, upload-time = "2026-07-10T19:33:53.312Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c1/7c/4e7225d46d634a0d8d534dd8a6ce0c319d09b4d0cf0337eb314ca4789d8c/virtualenv-21.6.1-py3-none-any.whl", hash = "sha256:afe991df855715a2b2f60edfcc0107ef95a79fdfd8cb4cdaa71603d1c12e463b", size = 5506392, upload-time = "2026-07-10T19:33:51.629Z" },
+]
+
+[[package]]
+name = "wemake-python-styleguide"
+version = "1.6.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "attrs" },
+    { name = "flake8" },
+    { name = "pygments" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/78/eb/c0ed67f144c6b5426cd444ccd22a22da4971e50a345c84bae187d1bfce27/wemake_python_styleguide-1.6.2.tar.gz", hash = "sha256:59c7d52b0677519aeb49714fca558eb93f278d8a7e18eadead455db8620ceb2f", size = 158636, upload-time = "2026-04-27T05:51:41.03Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7c/0c/c77f5bbb2e018d80916442022609cfbbfaa88a9579724f5332cf4a66e57c/wemake_python_styleguide-1.6.2-py3-none-any.whl", hash = "sha256:857690cb0e36132e7b3b5d339a11714014d539634ed27cf04cf08107f1c347cb", size = 221687, upload-time = "2026-04-27T05:51:42.481Z" },
 ]
