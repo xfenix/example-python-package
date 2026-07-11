@@ -11,14 +11,14 @@ install:
 fix:
     uv run ruff format
     uv run ruff check --fix
-    uv run auto-typing-final src tests
+    uv run auto-typing-final example_python_package tests
 
 # Check-only lint gate (never mutates files).
 lint:
     uv run ruff format --check
     uv run ruff check
-    uv run auto-typing-final --check src tests
-    uv run flake8 src tests
+    uv run auto-typing-final --check example_python_package tests
+    uv run flake8 example_python_package tests
 
 # Static type checking with ty (floating version).
 types:
