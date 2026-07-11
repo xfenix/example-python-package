@@ -1,5 +1,7 @@
 # example-python-package
 
+[![coverage](https://raw.githubusercontent.com/xfenix/example-python-package/gh-pages/badges/coverage.svg)](https://github.com/xfenix/example-python-package/actions/workflows/ci.yml)
+
 A simple Python package built to the [community-of-python/pylines](https://github.com/community-of-python/pylines) standards, with `ty` in place of mypy for type checking.
 
 ## Development
